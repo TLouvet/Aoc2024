@@ -7,8 +7,10 @@ let sum = 0;
 for (let row = 0; row < lines.length; row++) {
   for (let col = 0; col < lines[row].length; col++) {
     if (lines[row][col] === "X") {
-      const neighbours = Object.entries(strategies(row, col)).reduce((acc, [k, v]) => v ? [...acc, k] : acc, [])
-      sum += neighbours.reduce((acc, curr) => acc + dfs(row, col, curr), 0);
+      sum += Object
+        .entries(strategies(row, col))
+        .reduce((acc, [k, v]) => v ? [...acc, k] : acc, [])
+        .reduce((acc, curr) => acc + dfs(row, col, curr), 0);
     }
   }
 }
